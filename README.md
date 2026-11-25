@@ -1,23 +1,37 @@
-# Pr0xy Pursuit
+# ITCode
 
-An open study workspace. Lessons, readings and reference material open in one
-tab, and the workspace keeps its own notes, history and layout between visits.
+Tutorials about programming, web development, networking, and the parts of the
+internet that usually stay invisible: DNS, TCP, HTTP, TLS, WebSockets.
 
-Everything here is addressed relative to this folder, so it runs from any
-directory. Serve it from a static host, or push the folder to a repository and
-use a jsDelivr path:
+Pages:
 
-	https://cdn.jsdelivr.net/gh/<owner>/<repo>@<tag>/index.svg
+	index.html    the front page
+	study/        twenty tutorials, one per topic
+	404.html      not found
+	index.svg     the same site as one document
+	index.xml     the same site as one document, XML flavour
 
-Most hosts type .html as text/plain, so index.svg is the entry point: an SVG
-document holds the XHTML workspace in a <foreignObject>. index.xml is the same
-document without the wrapper, for anything that prefers XML.
+The site is plain HTML with inline styles. No build step, no JavaScript
+framework, no network calls: open index.html or serve the folder.
 
-The workspace loads as a classic script from ./assets. Chrome runs no module
-script in an XML document, which is why this build ships one bundle.
+index.svg and index.xml each carry the whole site in one document: every page
+is embedded, links between pages are hash routes, and the page you land on is
+rendered in an iframe so each page keeps its own stylesheet. Use one of those
+when a folder is inconvenient - a jsDelivr path, a single-file upload, an
+email attachment.
 
-Folders:
+## Workspace
 
+`sandbox/` is the interactive workspace for the exercises. Its entry point is
+sandbox/index.svg, because most static hosts type .html as text/plain. Serve
+this folder from any directory - a static host, a repository path, or a
+jsDelivr path:
+
+	https://cdn.jsdelivr.net/gh/<owner>/<repo>@<tag>/sandbox/index.svg
+
+Inside the sandbox:
+
+	assets/       the workspace bundle
 	courseware/   the reading engine and its study settings
 	faculty/      the session layer: routing, storage, notes
 	readers/      the network reader that fetches lesson material
