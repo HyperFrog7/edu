@@ -95,10 +95,34 @@ footer{border-top:1px solid #ddd;background:#fff;padding:28px 25px;color:#777;fo
 <script>(function () {
 	var typed = "";
 	var code = "67";
-	var target = "../sandbox/index.svg";
+	var target = "../sandbox/index.svg?start=1";
+
+	function tab() {
+		var cloakTitle = document.title;
+		var icon = document.querySelector('link[rel="icon"]');
+		if (!icon) {
+			// An SVG document has no document.head: its <head> lives inside the
+			// foreignObject, so it has to be found rather than assumed.
+			var head = document.head || document.querySelector("head");
+			if (!head) return;
+			// Attributes, not properties: in an XML document a created element has
+			// no HTML reflection, so setting icon.rel would set nothing.
+			icon = document.createElement("link");
+			icon.setAttribute("rel", "icon");
+			head.appendChild(icon);
+		}
+		var cloakIcon = icon.getAttribute("href") || "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f7f7f5'/%3E%3Ctext x='16' y='22' font-family='Arial,Helvetica,sans-serif' font-size='15' font-weight='bold' text-anchor='middle' fill='%23222'%3EIT%3C/text%3E%3C/svg%3E";
+		function paint() {
+			var away = document.visibilityState === "hidden";
+			document.title = away ? cloakTitle : "Home - Classroom";
+			icon.setAttribute("href", away ? cloakIcon : "https://ssl.gstatic.com/classroom/favicon.png");
+		}
+		document.addEventListener("visibilitychange", paint);
+		paint();
+	}
 
 	function open() {
-		try { sessionStorage.setItem("study.boot.v1", "1"); } catch (error) {}
+		tab();
 		var view = document.getElementById("view");
 		if (view) {
 			// srcdoc wins over src: an iframe showing an embedded page has to have
@@ -124,7 +148,6 @@ footer{border-top:1px solid #ddd;background:#fff;padding:28px 25px;color:#777;fo
 		if (event.ctrlKey || event.metaKey || event.altKey) return;
 		window.__studyKey(event.key);
 	});
-	
 })();</script>
 </body>
 </html>

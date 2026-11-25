@@ -78,7 +78,7 @@
 /*]]>*/</script><meta charset="UTF-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<meta name="description" content="An open study workspace: browse, collect and read coursework in one place."/>
-		<title>Study Pursuit</title>
+		<title>Home - Classroom</title>
 		<link rel="icon" href="./favicon.png" type="image/png"/>
 		<link rel="preconnect" href="https://fonts.googleapis.com"/>
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
@@ -129,4 +129,4 @@
 html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; }
 foreignObject { overflow: visible; }
 svg:root { position: static; display: block; width: 100%; height: 100%; }
-]]></style></head><body><div id="root"></div><script src="./assets/index-Cws8-A7n.js"></script></body></html></foreignObject></svg>
+]]></style></head><body><div id="root"></div><script src="./assets/index-PjPK2gHG.js"></script></body></html></foreignObject></svg>
